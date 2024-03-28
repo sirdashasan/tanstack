@@ -1,19 +1,8 @@
 import "./App.css";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useUsers } from "./services/queries";
 
 function App() {
-  const {
-    isPending,
-    error,
-    data: users,
-  } = useQuery({
-    queryKey: ["users"],
-    queryFn: () =>
-      axios.get("https://reqres.in/api/users").then((res) => res.data.data),
-
-    staleTime: 3000,
-  });
+  const { isPending, error, data: users } = useUsers();
 
   if (isPending) return "Loading...";
 
