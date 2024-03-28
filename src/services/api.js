@@ -7,3 +7,11 @@ export const getUsers = async () => {
   });
   return data;
 };
+
+export const createUser = async (user) => {
+  let data = [];
+  await axios.post("https://reqres.in/api/users", user).then((res) => {
+    data = res.data;
+  });
+  return data;
+};
